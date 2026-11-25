@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D Model Comparison — Generac Generator (Multi-View)</title>
+<title>3D Model Comparison — Generac Generator (Optimized)</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #1a1a2e; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-height: 100vh; }
@@ -22,9 +22,6 @@
   .info span { white-space: nowrap; }
   .info b { color: #ccc; }
   model-viewer { width: 100%; height: 400px; background: #0d1117; --poster-color: #0d1117; }
-  .controls { padding: 8px 16px 12px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-  .controls button { padding: 6px 12px; border: 1px solid #444; background: #1e2a4a; color: #ccc; border-radius: 6px; cursor: pointer; font-size: 0.8rem; }
-  .controls button:hover { background: #2a3a5a; }
   footer { text-align: center; padding: 16px; font-size: 0.75rem; color: #555; border-top: 1px solid #222; }
 </style>
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
@@ -32,59 +29,74 @@
 <body>
 
 <header>
-  <h1>3D Model Comparison — Generac Generator</h1>
-  <p>Drag to rotate • Scroll to zoom • Compare quality side-by-side</p>
+  <h1>3D Model Comparison — Hi3D v3.0 Optimized</h1>
+  <p>Same 48MB Hi3D model, optimized for web • Drag to rotate • Scroll to zoom • Compare quality vs file size</p>
 </header>
 
 <div class="grid">
 
-  <!-- Meshy v7.1 Multi-Image -->
+  <!-- Hi3D Original (48 MB) -->
   <div class="card">
     <div class="card-header">
-      <h2>1. Meshy v7.1 (Multi-Image, 4 inputs)</h2>
-      <span class="badge badge-best">★ Best Quality</span>
+      <h2>1. Hi3D Original (uncompressed)</h2>
+      <span class="badge badge-warn">48 MB — too heavy for web</span>
     </div>
-    <model-viewer src="3d_meshy_multi.glb" alt="Meshy v7.1 multi-image 3D model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
-    <div class="info">
-      <span>Size: <b>2.9 MB</b></span>
-      <span>Input: <b>4 images</b></span>
-      <span>Cost: <b>~$0.15</b></span>
-    </div>
-  </div>
-
-  <!-- Hi3D v3.0 Multi-View (still processing) -->
-  <div class="card">
-    <div class="card-header">
-      <h2>2. Hi3D v3.0 (Multi-View, 4 inputs)</h2>
-      <span class="badge badge-info">Processing...</span>
-    </div>
-    <model-viewer src="3d_hi3d.glb" alt="Hi3D v3.0 model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
+    <model-viewer src="3d_hi3d.glb" alt="Hi3D original uncompressed model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
     <div class="info">
       <span>Size: <b>48.0 MB</b></span>
-      <span>Input: <b>4 images</b></span>
-      <span>Cost: <b>~$0.05</b></span>
-      <span style="color: #fbbf24;">Multi-view still processing</span>
+      <span>Textures: <b>8K (8192×8192)</b></span>
+      <span>Compression: <b>None</b></span>
     </div>
   </div>
 
-  <!-- Meshy v7.1 (single image, for reference) -->
+  <!-- Hi3D Optimized (Meshopt + 2K textures) -->
   <div class="card">
     <div class="card-header">
-      <h2>3. Meshy v7.1 (single image)</h2>
-      <span class="badge badge-info">Reference</span>
+      <h2>2. Hi3D Optimized (2K textures)</h2>
+      <span class="badge badge-best">★ Best Balance</span>
+    </div>
+    <model-viewer src="3d_hi3d_optimized_2k.glb" alt="Hi3D optimized 2K model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
+    <div class="info">
+      <span>Size: <b>2.75 MB</b></span>
+      <span>Textures: <b>2K (2048×2048)</b></span>
+      <span>Compression: <b>Meshopt + WebP</b></span>
+      <span>Reduction: <b>94%</b></span>
+    </div>
+  </div>
+
+  <!-- Hi3D Optimized (Draco + 1K textures) -->
+  <div class="card">
+    <div class="card-header">
+      <h2>3. Hi3D Optimized (1K textures)</h2>
+      <span class="badge badge-info">Smallest (97% reduction)</span>
+    </div>
+    <model-viewer src="3d_hi3d_optimized.glb" alt="Hi3D optimized 1K model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
+    <div class="info">
+      <span>Size: <b>1.32 MB</b></span>
+      <span>Textures: <b>1K (1024×1024)</b></span>
+      <span>Compression: <b>Draco + WebP</b></span>
+      <span>Reduction: <b>97%</b></span>
+    </div>
+  </div>
+
+  <!-- Meshy single image (reference) -->
+  <div class="card">
+    <div class="card-header">
+      <h2>4. Meshy v7.1 (single image)</h2>
+      <span class="badge badge-info">Reference (3.4 MB)</span>
     </div>
     <model-viewer src="3d_meshy_v7.1.glb" alt="Meshy v7.1 single image model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
     <div class="info">
       <span>Size: <b>3.4 MB</b></span>
       <span>Input: <b>1 image</b></span>
-      <span>Cost: <b>~$0.15</b></span>
+      <span>Source: <b>meshy/v7.1</b></span>
     </div>
   </div>
 
 </div>
 
 <footer>
-  Generated via fal.ai API • Hunyuan3D v2 & Trellis removed (low quality) • Meshy multi-image vs Hi3D multi-view comparison
+  Hi3D v3.0 optimized with gltf-transform: Meshopt/Draco geometry compression + WebP texture encoding • Compare quality vs file size
 </footer>
 
 </body>
