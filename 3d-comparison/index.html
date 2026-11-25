@@ -3,183 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D Model Comparison — Generac Generator</title>
+<title>3D Model Comparison — Generac Generator (Multi-View)</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { 
-    background: #1a1a2e; 
-    color: #e0e0e0; 
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    min-height: 100vh;
-  }
-  header { 
-    padding: 24px; 
-    text-align: center; 
-    border-bottom: 1px solid #333;
-  }
+  body { background: #1a1a2e; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-height: 100vh; }
+  header { padding: 24px; text-align: center; border-bottom: 1px solid #333; }
   header h1 { font-size: 1.5rem; font-weight: 600; }
   header p { font-size: 0.875rem; color: #888; margin-top: 4px; }
-  .grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 16px;
-    padding: 24px;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .card {
-    background: #16213e;
-    border: 1px solid #333;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .card-header {
-    padding: 12px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #2a2a4a;
-  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 16px; padding: 24px; max-width: 1400px; margin: 0 auto; }
+  .card { background: #16213e; border: 1px solid #333; border-radius: 12px; overflow: hidden; }
+  .card-header { padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2a4a; }
   .card-header h2 { font-size: 1rem; font-weight: 600; }
-  .badge {
-    font-size: 0.75rem;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: 500;
-  }
+  .badge { font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
   .badge-best { background: #2d5a3d; color: #4ade80; }
+  .badge-info { background: #2d3a5a; color: #60a5fa; }
   .badge-warn { background: #5a3d2d; color: #fbbf24; }
-  .badge-neutral { background: #2d3a5a; color: #60a5fa; }
-  .info {
-    padding: 8px 16px 12px;
-    font-size: 0.8rem;
-    color: #888;
-    display: flex;
-    gap: 16px;
-  }
+  .badge-cheap { background: #2d5a3d; color: #4ade80; }
+  .info { padding: 8px 16px 12px; font-size: 0.8rem; color: #888; display: flex; gap: 16px; flex-wrap: wrap; }
   .info span { white-space: nowrap; }
   .info b { color: #ccc; }
-  model-viewer {
-    width: 100%;
-    height: 400px;
-    background: #0d1117;
-    --poster-color: #0d1117;
-  }
-  .controls {
-    padding: 8px 16px 12px;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .controls button {
-    padding: 6px 12px;
-    border: 1px solid #444;
-    background: #1e2a4a;
-    color: #ccc;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8rem;
-  }
+  model-viewer { width: 100%; height: 400px; background: #0d1117; --poster-color: #0d1117; }
+  .controls { padding: 8px 16px 12px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .controls button { padding: 6px 12px; border: 1px solid #444; background: #1e2a4a; color: #ccc; border-radius: 6px; cursor: pointer; font-size: 0.8rem; }
   .controls button:hover { background: #2a3a5a; }
-  footer {
-    text-align: center;
-    padding: 16px;
-    font-size: 0.75rem;
-    color: #555;
-    border-top: 1px solid #222;
-  }
+  footer { text-align: center; padding: 16px; font-size: 0.75rem; color: #555; border-top: 1px solid #222; }
 </style>
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
 
 <header>
-  <h1>3D Model Comparison — Generac Home Standby Generator</h1>
-  <p>Same source image, different AI 3D models • Drag to rotate • Scroll to zoom</p>
+  <h1>3D Model Comparison — Generac Generator (Multi-View Input)</h1>
+  <p>6 images fed to each model • Multi-view & multi-image endpoints • Drag to rotate • Scroll to zoom</p>
 </header>
 
 <div class="grid">
 
-  <!-- Hi3D v3.0 -->
+  <!-- Hunyuan3D v2 Multi-View -->
   <div class="card">
     <div class="card-header">
-      <h2>1. Hi3D v3.0</h2>
-      <span class="badge badge-best">★ Best Quality</span>
+      <h2>1. Hunyuan3D v2 Multi-View</h2>
+      <span class="badge badge-info">3 images (front/back/left)</span>
     </div>
-    <model-viewer 
-      src="https://raw.githubusercontent.com/etwcreationsdrwf/file-host/main/3d-comparison/3d_hi3d.glb" 
-      alt="Hi3D v3.0 3D model of Generac generator"
-      camera-controls 
-      auto-rotate
-      shadow-intensity="1"
-      environment-image="neutral"
-      exposure="1"
-    ></model-viewer>
+    <model-viewer src="3d_hunyuan_multi.glb" alt="Hunyuan3D v2 multi-view model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
     <div class="info">
-      <span>Size: <b>48.0 MB</b></span>
-      <span>Format: <b>GLB</b></span>
-      <span>Source: <b>hitem3d/hi3d/v3.0</b></span>
-    </div>
-    <div class="controls">
-      <button onclick="document.querySelectorAll('model-viewer')[0].autoRotate = !document.querySelectorAll('model-viewer')[0].autoRotate">Toggle Rotate</button>
+      <span>Size: <b>8.5 MB</b></span>
+      <span>Cost: <b>$0.16</b></span>
+      <span>Input: <b>3 images</b></span>
     </div>
   </div>
 
-  <!-- Tripo H3.1 -->
+  <!-- Trellis Multi -->
   <div class="card">
     <div class="card-header">
-      <h2>2. Tripo H3.1</h2>
-      <span class="badge badge-warn">⚠️ Misspelled logo</span>
+      <h2>2. Trellis Multi</h2>
+      <span class="badge badge-cheap">★ Cheapest ($0.02)</span>
     </div>
-    <model-viewer 
-      src="https://raw.githubusercontent.com/etwcreationsdrwf/file-host/main/3d-comparison/3d_tripo_h3.1.glb" 
-      alt="Tripo H3.1 3D model of Generac generator"
-      camera-controls 
-      auto-rotate
-      shadow-intensity="1"
-      environment-image="neutral"
-      exposure="1"
-    ></model-viewer>
+    <model-viewer src="3d_trellis_multi.glb" alt="Trellis multi model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
     <div class="info">
-      <span>Size: <b>42.6 MB</b></span>
-      <span>Format: <b>GLB</b></span>
-      <span>Source: <b>tripo3d/h3.1</b></span>
-    </div>
-    <div class="controls">
-      <button onclick="document.querySelectorAll('model-viewer')[1].autoRotate = !document.querySelectorAll('model-viewer')[1].autoRotate">Toggle Rotate</button>
+      <span>Size: <b>1.7 MB</b></span>
+      <span>Cost: <b>$0.02</b></span>
+      <span>Input: <b>4 images</b></span>
     </div>
   </div>
 
-  <!-- Meshy v7.1 -->
+  <!-- Meshy v7.1 Multi (from earlier single-image) -->
   <div class="card">
     <div class="card-header">
-      <h2>3. Meshy v7.1</h2>
-      <span class="badge badge-neutral">Side angle</span>
+      <h2>3. Meshy v7.1 (single image)</h2>
+      <span class="badge badge-info">Reference</span>
     </div>
-    <model-viewer 
-      src="https://raw.githubusercontent.com/etwcreationsdrwf/file-host/main/3d-comparison/3d_meshy_v7.1.glb" 
-      alt="Meshy v7.1 3D model of Generac generator"
-      camera-controls 
-      auto-rotate
-      shadow-intensity="1"
-      environment-image="neutral"
-      exposure="1"
-    ></model-viewer>
+    <model-viewer src="3d_meshy_v7.1.glb" alt="Meshy v7.1 model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
     <div class="info">
       <span>Size: <b>3.4 MB</b></span>
-      <span>Format: <b>GLB</b></span>
-      <span>Source: <b>meshy/v7.1</b></span>
+      <span>Cost: <b>$0.15</b></span>
+      <span>Input: <b>1 image</b></span>
     </div>
-    <div class="controls">
-      <button onclick="document.querySelectorAll('model-viewer')[2].autoRotate = !document.querySelectorAll('model-viewer')[2].autoRotate">Toggle Rotate</button>
+  </div>
+
+  <!-- Hi3D v3.0 (from earlier single-image) -->
+  <div class="card">
+    <div class="card-header">
+      <h2>4. Hi3D v3.0 (single image)</h2>
+      <span class="badge badge-best">★ Best Quality</span>
+    </div>
+    <model-viewer src="3d_hi3d.glb" alt="Hi3D v3.0 model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
+    <div class="info">
+      <span>Size: <b>48.0 MB</b></span>
+      <span>Cost: <b>$0.05</b></span>
+      <span>Input: <b>1 image</b></span>
     </div>
   </div>
 
 </div>
 
 <footer>
-  Generated via fal.ai API • All models from the same Generac generator reference image
+  Generated via fal.ai API • Multi-view models fed 6 Generac generator reference images • Trellis & Hunyuan3D multi-view results loading
 </footer>
 
 </body>
