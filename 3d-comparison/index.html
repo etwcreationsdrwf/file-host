@@ -18,7 +18,6 @@
   .badge-best { background: #2d5a3d; color: #4ade80; }
   .badge-info { background: #2d3a5a; color: #60a5fa; }
   .badge-warn { background: #5a3d2d; color: #fbbf24; }
-  .badge-cheap { background: #2d5a3d; color: #4ade80; }
   .info { padding: 8px 16px 12px; font-size: 0.8rem; color: #888; display: flex; gap: 16px; flex-wrap: wrap; }
   .info span { white-space: nowrap; }
   .info b { color: #ccc; }
@@ -33,72 +32,59 @@
 <body>
 
 <header>
-  <h1>3D Model Comparison — Generac Generator (Multi-View Input)</h1>
-  <p>6 images fed to each model • Multi-view & multi-image endpoints • Drag to rotate • Scroll to zoom</p>
+  <h1>3D Model Comparison — Generac Generator</h1>
+  <p>Drag to rotate • Scroll to zoom • Compare quality side-by-side</p>
 </header>
 
 <div class="grid">
 
-  <!-- Hunyuan3D v2 Multi-View -->
+  <!-- Meshy v7.1 Multi-Image -->
   <div class="card">
     <div class="card-header">
-      <h2>1. Hunyuan3D v2 Multi-View</h2>
-      <span class="badge badge-info">3 images (front/back/left)</span>
+      <h2>1. Meshy v7.1 (Multi-Image, 4 inputs)</h2>
+      <span class="badge badge-best">★ Best Quality</span>
     </div>
-    <model-viewer src="3d_hunyuan_multi.glb" alt="Hunyuan3D v2 multi-view model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
+    <model-viewer src="3d_meshy_multi.glb" alt="Meshy v7.1 multi-image 3D model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
     <div class="info">
-      <span>Size: <b>8.5 MB</b></span>
-      <span>Cost: <b>$0.16</b></span>
-      <span>Input: <b>3 images</b></span>
-    </div>
-  </div>
-
-  <!-- Trellis Multi -->
-  <div class="card">
-    <div class="card-header">
-      <h2>2. Trellis Multi</h2>
-      <span class="badge badge-cheap">★ Cheapest ($0.02)</span>
-    </div>
-    <model-viewer src="3d_trellis_multi.glb" alt="Trellis multi model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
-    <div class="info">
-      <span>Size: <b>1.7 MB</b></span>
-      <span>Cost: <b>$0.02</b></span>
+      <span>Size: <b>2.9 MB</b></span>
       <span>Input: <b>4 images</b></span>
+      <span>Cost: <b>~$0.15</b></span>
     </div>
   </div>
 
-  <!-- Meshy v7.1 Multi (from earlier single-image) -->
+  <!-- Hi3D v3.0 Multi-View (still processing) -->
+  <div class="card">
+    <div class="card-header">
+      <h2>2. Hi3D v3.0 (Multi-View, 4 inputs)</h2>
+      <span class="badge badge-info">Processing...</span>
+    </div>
+    <model-viewer src="3d_hi3d.glb" alt="Hi3D v3.0 model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
+    <div class="info">
+      <span>Size: <b>48.0 MB</b></span>
+      <span>Input: <b>4 images</b></span>
+      <span>Cost: <b>~$0.05</b></span>
+      <span style="color: #fbbf24;">Multi-view still processing</span>
+    </div>
+  </div>
+
+  <!-- Meshy v7.1 (single image, for reference) -->
   <div class="card">
     <div class="card-header">
       <h2>3. Meshy v7.1 (single image)</h2>
       <span class="badge badge-info">Reference</span>
     </div>
-    <model-viewer src="3d_meshy_v7.1.glb" alt="Meshy v7.1 model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
+    <model-viewer src="3d_meshy_v7.1.glb" alt="Meshy v7.1 single image model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
     <div class="info">
       <span>Size: <b>3.4 MB</b></span>
-      <span>Cost: <b>$0.15</b></span>
       <span>Input: <b>1 image</b></span>
-    </div>
-  </div>
-
-  <!-- Hi3D v3.0 (from earlier single-image) -->
-  <div class="card">
-    <div class="card-header">
-      <h2>4. Hi3D v3.0 (single image)</h2>
-      <span class="badge badge-best">★ Best Quality</span>
-    </div>
-    <model-viewer src="3d_hi3d.glb" alt="Hi3D v3.0 model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
-    <div class="info">
-      <span>Size: <b>48.0 MB</b></span>
-      <span>Cost: <b>$0.05</b></span>
-      <span>Input: <b>1 image</b></span>
+      <span>Cost: <b>~$0.15</b></span>
     </div>
   </div>
 
 </div>
 
 <footer>
-  Generated via fal.ai API • Multi-view models fed 6 Generac generator reference images • Trellis & Hunyuan3D multi-view results loading
+  Generated via fal.ai API • Hunyuan3D v2 & Trellis removed (low quality) • Meshy multi-image vs Hi3D multi-view comparison
 </footer>
 
 </body>
