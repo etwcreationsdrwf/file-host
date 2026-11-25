@@ -29,74 +29,59 @@
 <body>
 
 <header>
-  <h1>3D Model Comparison — Hi3D v3.0 Optimized</h1>
-  <p>Same 48MB Hi3D model, optimized for web • Drag to rotate • Scroll to zoom • Compare quality vs file size</p>
+  <h1>3D Model Comparison — Generac Generator (Optimized)</h1>
+  <p>Hi3D compressed for mobile load • Draco + WebP textures • Drag to rotate • Scroll to zoom</p>
 </header>
 
 <div class="grid">
 
-  <!-- Hi3D Original (48 MB) -->
+  <!-- Hi3D Draco 2K (1.45 MB) -->
   <div class="card">
     <div class="card-header">
-      <h2>1. Hi3D Original (uncompressed)</h2>
-      <span class="badge badge-warn">48 MB — too heavy for web</span>
+      <h2>1. Hi3D Draco 2K (1.45 MB)</h2>
+      <span class="badge badge-best">★ Best for Mobile</span>
     </div>
-    <model-viewer src="3d_hi3d.glb" alt="Hi3D original uncompressed model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
+    <model-viewer src="3d_hi3d_draco_2k.glb" alt="Hi3D Draco 2K optimized model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
     <div class="info">
-      <span>Size: <b>48.0 MB</b></span>
-      <span>Textures: <b>8K (8192×8192)</b></span>
-      <span>Compression: <b>None</b></span>
-    </div>
-  </div>
-
-  <!-- Hi3D Optimized (Meshopt + 2K textures) -->
-  <div class="card">
-    <div class="card-header">
-      <h2>2. Hi3D Optimized (2K textures)</h2>
-      <span class="badge badge-best">★ Best Balance</span>
-    </div>
-    <model-viewer src="3d_hi3d_optimized_2k.glb" alt="Hi3D optimized 2K model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
-    <div class="info">
-      <span>Size: <b>2.75 MB</b></span>
-      <span>Textures: <b>2K (2048×2048)</b></span>
-      <span>Compression: <b>Meshopt + WebP</b></span>
-      <span>Reduction: <b>94%</b></span>
-    </div>
-  </div>
-
-  <!-- Hi3D Optimized (Draco + 1K textures) -->
-  <div class="card">
-    <div class="card-header">
-      <h2>3. Hi3D Optimized (1K textures)</h2>
-      <span class="badge badge-info">Smallest (97% reduction)</span>
-    </div>
-    <model-viewer src="3d_hi3d_optimized.glb" alt="Hi3D optimized 1K model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
-    <div class="info">
-      <span>Size: <b>1.32 MB</b></span>
-      <span>Textures: <b>1K (1024×1024)</b></span>
-      <span>Compression: <b>Draco + WebP</b></span>
+      <span>Size: <b>1.45 MB</b></span>
+      <span>Textures: <b>2K WebP</b></span>
+      <span>Geometry: <b>Draco</b></span>
       <span>Reduction: <b>97%</b></span>
     </div>
   </div>
 
-  <!-- Meshy single image (reference) -->
+  <!-- Hi3D Plain 2K (12.9 MB) -->
   <div class="card">
     <div class="card-header">
-      <h2>4. Meshy v7.1 (single image)</h2>
-      <span class="badge badge-info">Reference (3.4 MB)</span>
+      <h2>2. Hi3D Plain 2K (12.9 MB)</h2>
+      <span class="badge badge-info">No geometry compression</span>
     </div>
-    <model-viewer src="3d_meshy_v7.1.glb" alt="Meshy v7.1 single image model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
+    <model-viewer src="3d_hi3d_plain_2k.glb" alt="Hi3D plain 2K model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
+    <div class="info">
+      <span>Size: <b>12.9 MB</b></span>
+      <span>Textures: <b>2K WebP</b></span>
+      <span>Geometry: <b>Uncompressed</b></span>
+      <span>Reduction: <b>73%</b></span>
+    </div>
+  </div>
+
+  <!-- Meshy (3.4 MB) reference -->
+  <div class="card">
+    <div class="card-header">
+      <h2>3. Meshy v7.1 (3.4 MB)</h2>
+      <span class="badge badge-info">Reference</span>
+    </div>
+    <model-viewer src="3d_meshy_v7.1.glb" alt="Meshy v7.1 model" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="1"></model-viewer>
     <div class="info">
       <span>Size: <b>3.4 MB</b></span>
       <span>Input: <b>1 image</b></span>
-      <span>Source: <b>meshy/v7.1</b></span>
     </div>
   </div>
 
 </div>
 
 <footer>
-  Hi3D v3.0 optimized with gltf-transform: Meshopt/Draco geometry compression + WebP texture encoding • Compare quality vs file size
+  Hi3D v3.0 compressed with gltf-transform: Draco geometry + WebP 2K textures • Compare load speed and quality
 </footer>
 
 </body>
